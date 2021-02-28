@@ -1,0 +1,106 @@
+{
+  "name": "bookshelf",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "^10.13 || 12 || 14",
+    "npm": ">=6"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "@reach/dialog": "^0.12.1",
+    "@reach/menu-button": "^0.12.1",
+    "@reach/tabs": "^0.12.1",
+    "@reach/tooltip": "^0.12.1",
+    "@reach/visually-hidden": "^0.12.0",
+    "bootstrap": "^4.5.3",
+    "codegen.macro": "^4.0.0",
+    "debounce-fn": "^4.0.0",
+    "faker": "^5.1.0",
+    "history": "^5.0.0",
+    "match-sorter": "^6.0.2",
+    "msw": "^0.24.2",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-error-boundary": "^3.1.0",
+    "react-icons": "^4.1.0",
+    "react-query": "2.1.1",
+    "react-query-devtools": "2.3.3",
+    "react-router": "^6.0.0-beta.0",
+    "react-router-dom": "^6.0.0-beta.0",
+    "react-scripts": "^4.0.1",
+    "stop-runaway-react-effects": "^2.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.2",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/react-hooks": "^3.7.0",
+    "@testing-library/user-event": "^12.5.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "cross-env": "^7.0.3",
+    "cypress": "^6.1.0",
+    "cypress-hmr-restarter": "^1.4.2",
+    "eslint-plugin-cypress": "^2.11.2",
+    "husky": "^4.3.5",
+    "inquirer": "^7.3.3",
+    "is-ci": "^2.0.0",
+    "is-ci-cli": "^2.1.2",
+    "jest": "^26.6.3",
+    "jest-watch-typeahead": "^0.6.1",
+    "netlify-plugin-cypress": "^1.4.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "react-test-renderer": "^17.0.1",
+    "resolve": "^1.19.0",
+    "serve": "^11.3.2",
+    "start-server-and-test": "^1.11.6",
+    "whatwg-fetch": "^3.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:cli": "cross-env BROWSER=none react-scripts start",
+    "build": "react-scripts build --profile",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --watch=false --coverage",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
+    "cy:install": "cypress install",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test start:cli http://localhost:3000/list cy:open",
+    "test:e2e:run": "start-server-and-test serve http://localhost:8811/list cy:run",
+    "serve": "serve --no-clipboard --single --listen 8811 build",
+    "lint": "eslint . --cache-location node_modules/.cache/eslint",
+    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\"",
+    "setup": "node setup",
+    "validate-exercises": "node ./scripts/validate-exercises",
+    "validate": "npm run validate-exercises && npm-run-all --parallel lint test:coverage build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "node ./scripts/pre-push"
+    }
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  },
+  "description": "",
+  "main": "go.js"
+}
